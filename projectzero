@@ -1,0 +1,42 @@
+#include <stdio.h>
+#define MAX_N 100000
+
+int main(){
+    int N;
+    printf("Digite a quantidade de números (máximo %d):\n", MAX_N);
+    if (scanf("%d", &N) != 1) {
+        printf("Entrada inválida!\n");
+        return 1;
+    }
+    if (N < 1 || N > MAX_N) {
+        printf("Quantidade de números fora dos limites permitidos!\n");
+        return 1;
+    }
+    int pilha[MAX_N];
+    int topo = 0;
+    int numero;
+
+    printf("Digite os números (use 0 para remover o ultimo numero):\n");
+    for (int i = 0; i < N; i++) {
+        if (scanf("%d", &numero) != 1) {
+            printf("Entrada inválida!\n");
+            return 1;
+        }
+        if (numero == 0) {
+            if (topo > 0) {
+                topo--;
+            }
+        } else {
+            pilha[topo] = numero;
+            topo++;
+        }
+    }
+
+    int soma = 0;
+    for (int i = 0; i < topo; i++) {
+        soma += pilha[i];
+    }
+
+    printf("A soma total é: %d\n", soma);
+    return 0;
+}
