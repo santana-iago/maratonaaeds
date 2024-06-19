@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main(){
+    int cartas[5];
+
+    // Ve as 5 cartas
+    printf("Digite as 5 cartas (de 1 a 13, distintos):\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &cartas[i]);
+    }
+
+    int crescente = 1;
+    int decrescente = 1;
+
+    // Verifica se é crescente
+    for (int i = 0; i < 4; i++) {
+        if (cartas[i] > cartas[i + 1]) {
+            crescente = 0;
+            break;
+        }
+    }
+
+    // Verifica se é decrescente
+    for (int i = 0; i < 4; i++) {
+        if (cartas[i] < cartas[i + 1]) {
+            decrescente = 0;
+            break;
+        }
+    }
+
+    // Fala o resultado
+    if (crescente) {
+        printf("=== C ===\n");
+    } else if (decrescente) {
+        printf("=== D ===\n");
+    } else {
+        printf("=== N ===\n");
+    }
+
+    return 0;
+}
